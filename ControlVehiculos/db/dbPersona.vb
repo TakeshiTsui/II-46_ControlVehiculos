@@ -2,15 +2,15 @@
 
 Public Class dbPersona
 
-    Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings
+    Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings("II46ConnectionString").ConnectionString
 
     Public Function create(Persona As Persona) As Boolean
         Try
             Dim sql As String = "INSERT INTO Persona (Nombre, Apellido, Edad) VALUES (@Nombre, @Apellido, @Edad)"
             Dim Parametros As New List(Of SqlParameter) From {
             New SqlParameter("@Nombre", Persona.Nombre),
-            New SqlParameter("@Apellido", Persona.Apellido),
-            New SqlParameter("@Edad", Persona.Edad)
+            New SqlParameter("@Apellido", Persona.Apellido1),
+            New SqlParameter("@Edad", Persona.FechaNacimiento)
         }
 
             Using connetion As New SqlConnection(ConectionString)
@@ -49,10 +49,10 @@ Public Class dbPersona
         Try
             Dim sql As String = "UPDATE Persona SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad WHERE ID = @Id"
             Dim Parametros As New List(Of SqlParameter) From {
-            New SqlParameter("@Id", Persona.ID),
+            New SqlParameter("@Id", Persona.IdPersona),
             New SqlParameter("@Nombre", Persona.Nombre),
-            New SqlParameter("@Apellido", Persona.Apellido),
-            New SqlParameter("@Edad", Persona.Edad)
+            New SqlParameter("@Apellido", Persona.Apellido1),
+            New SqlParameter("@Edad", Persona.FechaNacimiento)
         }
             Using connetion As New SqlConnection(ConectionString)
                 Using command As New SqlCommand(sql, connetion)
