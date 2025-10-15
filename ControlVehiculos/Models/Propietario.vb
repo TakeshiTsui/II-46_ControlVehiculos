@@ -1,13 +1,13 @@
 ﻿Public Class Propietario
     Inherits Persona
     Private _idPropietario As Integer
-    Private _numVehiculos As Integer
+    Private _numVehiculos As String
 
     Public Sub New()
-        ' Constructor por defecto
+        MyBase.New()
     End Sub
 
-    Public Sub New(idPropietario As Integer, numVehiculos As Integer)
+    Public Sub New(idPropietario As Integer, numVehiculos As String)
         Me.IdPropietario = idPropietario
         Me.NumVehiculos = numVehiculos
     End Sub
@@ -21,11 +21,11 @@
         End Set
     End Property
 
-    Public Property NumVehiculos As Integer
+    Public Property NumVehiculos As String
         Get
             Return _numVehiculos
         End Get
-        Set(value As Integer)
+        Set(value As String)
             _numVehiculos = value
         End Set
     End Property
