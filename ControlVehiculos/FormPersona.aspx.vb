@@ -22,12 +22,7 @@ Public Class FormPersona
             If dbHelper.create(persona) Then
                 ShowSuccessMessage(Me, "Éxito", "Persona creada exitosamente")
                 lblMensaje.Text = "Persona creada"
-                txtNombre.Text = ""
-                txtApellido1.Text = ""
-                txtApellido2.Text = ""
-                txtFechaNacimiento.Text = ""
-                txtNacionalidad.Text = ""
-                txtTelefono.Text = ""
+                limpiarFormulario()
             Else
                 lblMensaje.Text = "Ocurrio un error"
             End If
@@ -46,7 +41,7 @@ Public Class FormPersona
             ShowDeleteMessage(Me, "Eliminado", "Persona eliminada correctamente")
             gvPersonas.DataBind()
         Catch ex As Exception
-            lblMensaje.Text = "Error al eliminar la persona: " & ex.Message
+            ShowErrorMessage(Me, "Error...", "No se pudo eliminar la persona")
         End Try
 
     End Sub
@@ -58,11 +53,8 @@ Public Class FormPersona
     End Sub
 
     Protected Sub gvPersonas_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
-
         gvPersonas.EditIndex = -1
         gvPersonas.DataBind()
-
-
     End Sub
 
     Protected Sub gvPersonas_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
