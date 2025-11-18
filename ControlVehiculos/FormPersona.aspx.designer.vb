@@ -32,31 +32,58 @@ Partial Public Class FormPersona
     Protected WithEvents txtNombre As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtApellido.
+    '''Control txtApellido1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtApellido As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtApellido1 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtEdad.
+    '''Control txtApellido2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtEdad As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtApellido2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnMostrar.
+    '''Control txtNacionalidad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnMostrar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents txtNacionalidad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtFechaNacimiento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaNacimiento As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtTelefono.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtTelefono As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnGuardar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control btnActualizar.
@@ -66,6 +93,15 @@ Partial Public Class FormPersona
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnActualizar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control btnCancelar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control lblMensaje.
@@ -86,11 +122,11 @@ Partial Public Class FormPersona
     Protected WithEvents gvPersonas As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control SqlDataSource1.
+    '''Control SqlDataSource2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents SqlDataSource2 As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

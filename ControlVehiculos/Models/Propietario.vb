@@ -15,6 +15,10 @@
         Me.IdPropietario = idPropietario
         Me.NumVehiculos = numVehiculos
     End Sub
+    Public Sub New(idPropietario As Integer, numVehiculos As String)
+        Me.IdPropietario = idPropietario
+        Me.NumVehiculos = numVehiculos
+    End Sub
 
     Public Property IdPropietario As Integer
         Get
