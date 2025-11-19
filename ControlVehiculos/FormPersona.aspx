@@ -12,8 +12,8 @@
     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" placeholder="Fecha de Nacimiento" TextMode="Date" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtTelefono" CssClass="form-control" placeholder="Telefono" TextMode="Phone" runat="server"></asp:TextBox>
     <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Guardar" OnClick="btnGuardar_Click" />
-    <asp:Button ID="btnActualizar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Actualizar" OnClick="btnActualizar_Click" />
-    <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-danger btn-hover-move" Text="Cancelar" OnClick="btnCancelar_Click" />  
+    <asp:Button ID="btnActualizar" runat="server" CssClass="btn btn-primary btn-hover-move" visible="false" Text="Actualizar" OnClick="btnActualizar_Click" />
+    <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-danger btn-hover-move" visible="false" Text="Cancelar" OnClick="btnCancelar_Click" />  
 
     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
 
@@ -28,7 +28,7 @@
     <Columns>
         <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-primary" />
         <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-secondary" />
-        <asp:BoundField DataField="idPersona" HeaderText="idPersona" ReadOnly="True" SortExpression="idPersona" InsertVisible="False" />
+        <asp:BoundField DataField="idPersona" HeaderText="idPersona" ReadOnly="True" Visible="false" SortExpression="idPersona" InsertVisible="False" />
         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
         <asp:BoundField DataField="Apellido1" HeaderText="Apellido1" SortExpression="Apellido1" />
         <asp:BoundField DataField="Apellido2" HeaderText="Apellido2" SortExpression="Apellido2" />

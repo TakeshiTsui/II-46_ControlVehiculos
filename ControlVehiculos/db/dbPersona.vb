@@ -3,6 +3,7 @@
 Public Class dbPersona
 
     Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings("II-46ConnectionString").ConnectionString
+    Private ReadOnly dbhelper As New DbHelper() 'clase para mejorar conexion y manejo de errores
 
     Public Function create(Persona As Persona) As Boolean
         Try
@@ -16,13 +17,7 @@ Public Class dbPersona
             New SqlParameter("@Telefono", Persona.Telefono)
         }
 
-            Using connetion As New SqlConnection(ConectionString)
-                Using command As New SqlCommand(sql, connetion)
-                    command.Parameters.AddRange(Parametros.ToArray())
-                    connetion.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            dbhelper.ExecuteNonQuery(sql, Parametros)
         Catch ex As Exception
             Return False
         End Try
@@ -36,13 +31,7 @@ Public Class dbPersona
             Dim Parametros As New List(Of SqlParameter) From {
             New SqlParameter("@IdPersona", id)
         }
-            Using connetion As New SqlConnection(ConectionString)
-                Using command As New SqlCommand(sql, connetion)
-                    command.Parameters.AddRange(Parametros.ToArray())
-                    connetion.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            dbhelper.ExecuteNonQuery(sql, Parametros)
         Catch ex As Exception
         End Try
         Return "Persona eliminada"
@@ -58,7 +47,7 @@ Public Class dbPersona
             New SqlParameter("@Apellido2", Persona.Apellido2),
             New SqlParameter("@Nacionalidad", Persona.Nacionalidad),
             New SqlParameter("@FechaNacimiento", Persona.FechaNacimiento),
-            New SqlParameter("@Telefno", Persona.Telefono)
+            New SqlParameter("@Telefono", Persona.Telefono)
         }
             Using connetion As New SqlConnection(ConectionString)
                 Using command As New SqlCommand(sql, connetion)
@@ -68,6 +57,7 @@ Public Class dbPersona
                 End Using
             End Using
         Catch ex As Exception
+            Return "Error al actualizar la persona: " & ex.Message
         End Try
         Return "Persona actualizada"
     End Function

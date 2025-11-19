@@ -5,7 +5,7 @@ Public Class FormPersona
     Protected dbHelper As New dbPersona()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        btnActualizar.Visible = False
+
     End Sub
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
@@ -58,30 +58,33 @@ Public Class FormPersona
     End Sub
 
     Protected Sub gvPersonas_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
-
-
-        Dim id As Integer = Convert.ToInt32(gvPersonas.DataKeys(e.RowIndex).Value)
-        Dim persona As Persona = New Persona With {
-            .Nombre = e.NewValues("Nombre"),
-            .Apellido1 = e.NewValues("Apellido1"),
-            .Apellido2 = e.NewValues("Apellido2"),
-            .Nacionalidad = e.NewValues("Nacionalidad"),
-            .FechaNacimiento = e.NewValues("FechaNacimiento"),
-            .Telefono = e.NewValues("Telefono"),
-            .IdPersona = id
-        }
-        ShowUpdateMessage(Me, "Actualizado", "Persona actualizada correctamente")
-        dbHelper.update(persona)
-        gvPersonas.DataBind()
-        e.Cancel = True
-        gvPersonas.EditIndex = -1
+        Try
+            Dim id As Integer = Convert.ToInt32(gvPersonas.DataKeys(e.RowIndex).Value)
+            Dim persona As Persona = New Persona With {
+                .Nombre = e.NewValues("Nombre"),
+                .Apellido1 = e.NewValues("Apellido1"),
+                .Apellido2 = e.NewValues("Apellido2"),
+                .Nacionalidad = e.NewValues("Nacionalidad"),
+                .FechaNacimiento = e.NewValues("FechaNacimiento"),
+                .Telefono = e.NewValues("Telefono"),
+                .IdPersona = id
+            }
+            ShowUpdateMessage(Me, "Actualizado", "Persona actualizada correctamente")
+            dbHelper.update(persona)
+            gvPersonas.DataBind()
+            e.Cancel = True
+            gvPersonas.EditIndex = -1
+        Catch ex As Exception
+            ShowErrorMessage(Me, "Error...", ex.Message)
+        End Try
 
     End Sub
 
     Protected Sub gvPersonas_SelectedIndexChanged(sender As Object, e As EventArgs)
 
         Dim row As GridViewRow = gvPersonas.SelectedRow()
-        Dim id As Integer = Convert.ToInt32(row.Cells(2).Text)
+        Dim idPersona As Integer
+        Integer.TryParse(gvPersonas.DataKeys(row.RowIndex).Value.ToString(), idPersona)
         Dim persona As Persona = New Persona()
 
         txtNombre.Text = row.Cells(3).Text
@@ -98,7 +101,8 @@ Public Class FormPersona
     End Sub
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
-        Dim persona As Persona = New Persona With {
+        Try
+            Dim persona = New Persona With {
             .Nombre = txtNombre.Text(),
             .Apellido1 = txtApellido1.Text(),
             .Apellido2 = txtApellido2.Text(),
@@ -107,10 +111,18 @@ Public Class FormPersona
             .Telefono = txtTelefono.Text(),
             .IdPersona = editando.Value()
         }
-        ShowUpdateMessage(Me, "Actualizado", "Persona actualizada correctamente")
-        dbHelper.update(persona)
-        gvPersonas.DataBind()
-        gvPersonas.EditIndex = -1
+            Dim mensaje = dbHelper.update(persona)
+            If mensaje.Contains("Error") Then
+                ShowErrorMessage(Me, "Error...", mensaje)
+            Else
+                ShowUpdateMessage(Me, "Actualizado", "Persona actualizada correctamente")
+            End If
+            gvPersonas.DataBind()
+            gvPersonas.EditIndex = -1
+            limpiarFormulario()
+        Catch ex As Exception
+            ShowErrorMessage(Me, "Error...", ex.Message)
+        End Try
     End Sub
     Protected Sub limpiarFormulario()
         btnActualizar.Visible = False
