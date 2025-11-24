@@ -91,9 +91,9 @@ Public Class FormPersona
         txtApellido1.Text = row.Cells(4).Text
         txtApellido2.Text = row.Cells(5).Text
         txtNacionalidad.Text = row.Cells(6).Text
-        txtFechaNacimiento.Text = row.Cells(7).Text
+        txtFechaNacimiento.Text = CDate(row.Cells(7).Text).ToString("yyyy-MM-dd")
         txtTelefono.Text = row.Cells(8).Text
-        editando.Value = id
+        editando.Value = idPersona
         btnActualizar.Visible = True
         btnCancelar.Visible = True
         btnGuardar.Visible = False
