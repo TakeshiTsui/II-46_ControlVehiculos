@@ -14,11 +14,11 @@ Public Class Registro
         Dim PasswordC = txtConfirmarPassword.Text
         If Password <> PasswordC Then
             SwalUtils.ShowErrorMessage(Me, "Error de registro", "No coindiden la contraseña, introduzca nuevamente")
+            Return
         End If
         Dim encrypter As New Simple3Ds("MiClaveDeEncriptacion123") ' Clave de encriptación
-        Dim Pass As String = encrypter.EncryptData(Password)
-        Dim usuario As Usuario = New Usuario(NombreUsuario, Pass)
-        usuario.Email = txtEmail.Text
+        Dim Pass As String = encrypter.EncryptData(Password) ' Encriptar la contraseña
+        Dim usuario As Usuario = New Usuario(NombreUsuario, Pass, txtEmail.Text)
         Dim mensaje = dbHelper.RegisterUser(usuario)
         If mensaje.Contains("Error") Then
             SwalUtils.ShowErrorMessage(Me, "Error", mensaje)

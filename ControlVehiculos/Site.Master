@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - Control de Vehiculos</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -48,8 +48,6 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <%if (Autenticado = False) Then %>
-
-                          
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Login></a>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Registro.aspx">Registro></a>
                          <% End if%> -- Solo se muestra si no está autenticado
@@ -61,7 +59,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/FormPropietario">Propietarios</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server"></a>
                          <% End if%> 
-                        <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesión" OnClick="btnLogOut_Click" cssclass="btn btn-danger btm-sm" />
+                        <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesión" OnClick="btnLogOut_Click" cssclass="btn btn-danger" />
                         </li>
                     </ul>
                 </div>
@@ -72,7 +70,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Control de Vehiculos</p>
             </footer>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
