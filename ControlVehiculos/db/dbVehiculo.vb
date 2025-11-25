@@ -1,20 +1,20 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class dbPersona
+Public Class dbVehiculo
 
     Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings("II-46ConnectionString").ConnectionString
     Private ReadOnly dbhelper As New DbHelper() 'clase para mejorar conexion y manejo de errores
 
-    Public Function create(Persona As Persona) As Boolean
+    Public Function create(Vehiculo As Vehiculo) As Boolean
         Try
-            Dim sql As String = "INSERT INTO Personas (Nombre, Apellido1, Apellido2, Nacionalidad, FechaNacimiento, Telefono) VALUES (@Nombre, @Apellido1, @Apellido2, @Nacionalidad, @FechaNacimiento, @Telefono)"
+            Dim sql As String = "INSERT INTO Vehiculo (IdPropietario, Placa, Marca, Modelo, Anio, Color) VALUES (@IdPropietario, @Placa, @Marca, @Modelo, @Anio, @Color)"
             Dim Parametros As New List(Of SqlParameter) From {
-            New SqlParameter("@Nombre", Persona.Nombre),
-            New SqlParameter("@Apellido1", Persona.Apellido1),
-            New SqlParameter("@Apellido2", Persona.Apellido2),
-            New SqlParameter("@Nacionalidad", Persona.Nacionalidad),
-            New SqlParameter("@FechaNacimiento", Persona.FechaNacimiento),
-            New SqlParameter("@Telefono", Persona.Telefono)
+            New SqlParameter("@IdPropietario", Vehiculo.IdPropietario),
+            New SqlParameter("@Placa", Vehiculo.Placa),
+            New SqlParameter("@Marca", Vehiculo.Marca),
+            New SqlParameter("@Modelo", Vehiculo.Modelo),
+            New SqlParameter("@Anio", Vehiculo.Anio),
+            New SqlParameter("@Color", Vehiculo.Color)
         }
 
             dbhelper.ExecuteNonQuery(sql, Parametros)
@@ -27,9 +27,9 @@ Public Class dbPersona
 
     Public Function delete(ByRef id As Integer) As String
         Try
-            Dim sql As String = "DELETE FROM Personas WHERE idPersona = @idPersona"
+            Dim sql As String = "DELETE FROM Vehiculo WHERE IdVehiculo = @IdVehiculo"
             Dim Parametros As New List(Of SqlParameter) From {
-            New SqlParameter("@IdPersona", id)
+            New SqlParameter("@IdVehiculo", id)
         }
             dbhelper.ExecuteNonQuery(sql, Parametros)
         Catch ex As Exception
@@ -37,17 +37,17 @@ Public Class dbPersona
         Return "Persona eliminada"
     End Function
 
-    Public Function update(ByRef Persona As Persona) As String
+    Public Function update(ByRef Vehiculo As Vehiculo) As String
         Try
-            Dim sql As String = "UPDATE Personas SET Nombre = @Nombre, Apellido1 = @Apellido1, Apellido2 = @Apellido2, Nacionalidad = @Nacionalidad, FechaNacimiento = @FechaNacimiento, Telefono = @Telefono  WHERE idPersona = @idPersona"
+            Dim sql As String = "UPDATE Vehiculo SET IdPropietario = @IdPropietario, Placa = @Placa, Modelo = @Modelo, Marca = @Marca, Anio = @Anio, Color = @Color WHERE IdVehiculo = @IdVehiculo"
             Dim Parametros As New List(Of SqlParameter) From {
-            New SqlParameter("@IdPersona", Persona.IdPersona),
-            New SqlParameter("@Nombre", Persona.Nombre),
-            New SqlParameter("@Apellido1", Persona.Apellido1),
-            New SqlParameter("@Apellido2", Persona.Apellido2),
-            New SqlParameter("@Nacionalidad", Persona.Nacionalidad),
-            New SqlParameter("@FechaNacimiento", Persona.FechaNacimiento),
-            New SqlParameter("@Telefono", Persona.Telefono)
+            New SqlParameter("@IdVehiculo", Vehiculo.IdVehiculo),
+            New SqlParameter("@IdPropietario", Vehiculo.IdPropietario),
+            New SqlParameter("@Placa", Vehiculo.Placa),
+            New SqlParameter("@Marca", Vehiculo.Marca),
+            New SqlParameter("@Modelo", Vehiculo.Modelo),
+            New SqlParameter("@Anio", Vehiculo.Anio),
+            New SqlParameter("@Color", Vehiculo.Color)
         }
             Using connetion As New SqlConnection(ConectionString)
                 Using command As New SqlCommand(sql, connetion)
@@ -66,6 +66,5 @@ Public Class dbPersona
         Dim sql As String = "SELECT *, CONCAT(Nombre, ' ', Apellido1, ' ', Apellido2, ' ') NombreCompleto FROM Personas"
         Return dbhelper.ExecuteQuery(sql, Nothing)
     End Function
-
 
 End Class

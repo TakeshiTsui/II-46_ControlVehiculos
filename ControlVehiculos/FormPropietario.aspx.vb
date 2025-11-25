@@ -15,5 +15,12 @@ Public Class FormPropietario
         ddlPersona.DataBind()
         ddlPersona.Items.Insert(0, New ListItem("-- Seleccione una persona --", "0"))
     End Sub
-
+    Public Sub LimpiarCampos()
+        txtNombre.Text = ""
+        txtApellido1.Text = ""
+        txtApellido2.Text = ""
+        txtNacionalidad.Text = ""
+        txtFechaNacimiento.Text = ""
+        txtTelefono.Text = ""
+    End Sub
 End Class

@@ -3,7 +3,7 @@
     Private _idPropietario As Integer
     Private _marca As String
     Private _modelo As String
-    Private _anio As Integer
+    Private _anio As Date
     Private _color As String
     Private _placa As String
 
@@ -11,7 +11,7 @@
         ' Constructor por defecto
     End Sub
 
-    Public Sub New(idVehiculo As Integer, idPropietario As Integer, marca As String, modelo As String, anio As Integer, color As String, placa As String)
+    Public Sub New(idVehiculo As Integer, idPropietario As Integer, marca As String, modelo As String, anio As Date, color As String, placa As String)
         Me.IdVehiculo = idVehiculo
         Me.IdPropietario = idPropietario
         Me.Marca = marca
@@ -57,11 +57,11 @@
         End Set
     End Property
 
-    Public Property Anio As Integer
+    Public Property Anio As Date
         Get
             Return _anio
         End Get
-        Set(value As Integer)
+        Set(value As Date)
             _anio = value
         End Set
     End Property

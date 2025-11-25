@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container d-flex flex-column mb-3 gap-2">
-    <asp:DropDownList ID="ddlPersona" cssclass="form-control" runat="server"> 
+    <asp:DropDownList ID="ddlPersona" cssclass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlPersona_SelectedIndexChanged"> 
         <asp:ListItem Text ="Seleccione una persona" Value="" ></asp:ListItem>
     </asp:DropDownList>
 
