@@ -4,6 +4,7 @@
     <asp:HiddenField ID="editando" runat="server"/> 
 
     <div class="container d-flex flex-column mb-3 gap-2">
+        <asp:DropDownList ID="ddlPropietario" runat="server"><asp:ListItem Text ="Seleccione un propietario" Value="" ></asp:ListItem></asp:DropDownList>
 
     <asp:TextBox ID="txtIdPropietario" CssClass="form-control" placeholder="Propietario" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtPlaca" CssClass="form-control" placeholder="Placa del Vehiculo" runat="server"></asp:TextBox>

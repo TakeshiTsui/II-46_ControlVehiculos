@@ -23,6 +23,15 @@ Partial Public Class FormVehiculo
     Protected WithEvents editando As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
+    '''Control ddlPropietario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlPropietario As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control txtIdPropietario.
     '''</summary>
     '''<remarks>

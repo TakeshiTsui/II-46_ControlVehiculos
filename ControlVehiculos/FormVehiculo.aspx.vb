@@ -4,9 +4,20 @@ Public Class FormVehiculo
     Inherits System.Web.UI.Page
     Public vehiculo As New Vehiculo()
     Protected dbhelper As New dbVehiculo()
+    Protected dbPropietario As New dbPropietario()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            CargarPropietario()
+        End If
+    End Sub
 
+    Public Sub CargarPropietario()
+        ddlPropietario.DataSource = dbPropietario.Consulta()
+        ddlPropietario.DataTextField = "NombreCompleto"
+        ddlPropietario.DataValueField = "IdPersona"
+        ddlPropietario.DataBind()
+        ddlPropietario.Items.Insert(0, New ListItem("-- Seleccione un propietario --", "0"))
     End Sub
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)

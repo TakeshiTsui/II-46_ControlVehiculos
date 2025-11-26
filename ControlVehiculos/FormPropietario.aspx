@@ -2,18 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container d-flex flex-column mb-3 gap-2">
-    <asp:DropDownList ID="ddlPersona" cssclass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlPersona_SelectedIndexChanged"> 
+    <asp:DropDownList ID="ddlPersona" cssclass="form-control" runat="server"> 
         <asp:ListItem Text ="Seleccione una persona" Value="" ></asp:ListItem>
     </asp:DropDownList>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="IdPropietario" DataSourceID="SqlDataSource1">
+            <Columns>
+                <asp:BoundField DataField="IdPropietario" HeaderText="IdPropietario" InsertVisible="False" ReadOnly="True" SortExpression="IdPropietario" />
+                <asp:BoundField DataField="IdPersona" HeaderText="IdPersona" SortExpression="IdPersona" />
+            </Columns>
+        </asp:GridView>
 
-    <asp:TextBox ID="txtNombre" CssClass="form-control" placeholder="Nombre" runat="server"></asp:TextBox>
-    <asp:TextBox ID="txtApellido1" CssClass="form-control" placeholder="Primer Apellido" runat="server"></asp:TextBox>
-    <asp:TextBox ID="txtApellido2" CssClass="form-control" placeholder="Segundo Apellido" runat="server"></asp:TextBox>
-    <asp:TextBox ID="txtNacionalidad" CssClass="form-control" placeholder="Nacionalidad" runat="server"></asp:TextBox>
-    <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" placeholder="Fecha de Nacimiento" TextMode="Date" runat="server"></asp:TextBox>
-    <asp:TextBox ID="txtTelefono" CssClass="form-control" placeholder="Telefono" TextMode="Phone" runat="server"></asp:TextBox>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:II-46ConnectionString %>" SelectCommand="SELECT * FROM [Propietario]"></asp:SqlDataSource>
+
+    <asp:Button ID="btnGuardar" CssClass="btn btn-primary" Text="Guardar" OnClick="btnGuardar_Click" runat="server" />
     
-    <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
 
 </div>
 
